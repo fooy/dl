@@ -1,0 +1,74 @@
+diff -r -c diffutils-3.3/lib/msvc-inval.c diffutils-3.3-p/lib/msvc-inval.c
+*** diffutils-3.3/lib/msvc-inval.c	Fri Mar 22 12:21:35 2013
+--- diffutils-3.3-p/lib/msvc-inval.c	Sun Sep  7 17:14:17 2014
+***************
+*** 28,34 ****
+  
+  # if MSVC_INVALID_PARAMETER_HANDLING == DEFAULT_HANDLING
+  
+! static void cdecl
+  gl_msvc_invalid_parameter_handler (const wchar_t *expression,
+                                     const wchar_t *function,
+                                     const wchar_t *file,
+--- 28,34 ----
+  
+  # if MSVC_INVALID_PARAMETER_HANDLING == DEFAULT_HANDLING
+  
+! static void __cdecl
+  gl_msvc_invalid_parameter_handler (const wchar_t *expression,
+                                     const wchar_t *function,
+                                     const wchar_t *file,
+***************
+*** 45,51 ****
+  
+  #  if defined _MSC_VER
+  
+! static void cdecl
+  gl_msvc_invalid_parameter_handler (const wchar_t *expression,
+                                     const wchar_t *function,
+                                     const wchar_t *file,
+--- 45,51 ----
+  
+  #  if defined _MSC_VER
+  
+! static void __cdecl
+  gl_msvc_invalid_parameter_handler (const wchar_t *expression,
+                                     const wchar_t *function,
+                                     const wchar_t *file,
+***************
+*** 94,100 ****
+      }
+  }
+  
+! static void cdecl
+  gl_msvc_invalid_parameter_handler (const wchar_t *expression,
+                                     const wchar_t *function,
+                                     const wchar_t *file,
+--- 94,100 ----
+      }
+  }
+  
+! static void __cdecl
+  gl_msvc_invalid_parameter_handler (const wchar_t *expression,
+                                     const wchar_t *function,
+                                     const wchar_t *file,
+diff -r -c diffutils-3.3/src/sdiff.c diffutils-3.3-p/src/sdiff.c
+*** diffutils-3.3/src/sdiff.c	Sat Feb  2 12:39:05 2013
+--- diffutils-3.3-p/src/sdiff.c	Sun Sep  7 17:14:19 2014
+***************
+*** 805,811 ****
+  
+        /* Yield an exit status indicating that a signal was received.  */
+        untrapsig (s);
+!       kill (getpid (), s);
+  
+        /* That didn't work, so exit with error status.  */
+        exit (EXIT_TROUBLE);
+--- 805,811 ----
+  
+        /* Yield an exit status indicating that a signal was received.  */
+        untrapsig (s);
+!       //kill (getpid (), s);
+  
+        /* That didn't work, so exit with error status.  */
+        exit (EXIT_TROUBLE);
