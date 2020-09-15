@@ -1,0 +1,22 @@
+
+regular expression :
+
+
+extract match:
+ 	$pname= $cell.Text |select-string -pattern $re1 | select -expand matches | select -expand groups| select -index 1
+	"pname=$pname"
+all match:
+	$apps=  $cell.Text |select-string -pattern $re2 -allmatches |select -expand matches |select -property groups| %{ $_.groups[1] }
+	
+get multi sub match:
+
+	$di,$port=$hl_text | select-string -pattern $re4 | select -expand matches | select -expand groups | select -index 1,2
+
+
+excel copy cells:
+	#A1-I1
+	$src = $clog1.Range("$(OffRow(0))$($i):$(OffRow(9))$i")
+    	#C1-K1
+	$dst = $clog2.Range("$(OffRow(2))$($i):$(OffRow(11))$i")
+	#range.range
+	$_=$src.range("D1:I1").copy($dst.range("E1:J1"))
